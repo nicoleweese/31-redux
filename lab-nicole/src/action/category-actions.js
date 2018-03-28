@@ -1,0 +1,29 @@
+'use strict';
+
+import uuid from 'uuid';
+
+export const categoryCreate = (category) => {
+  category.id = uuid();
+  category.timestamp = new Date();
+  return {
+    type: 'CATEGORY_CREATE',
+    payload:category
+  }
+}
+
+export const categoryUpdate = (category) => ({
+  type: 'CATEGORY_UPDATE',
+  payload: category
+})
+
+export const categoryToggleEdit = (category) => ({
+  type: 'CATEGORY_TOGGLE',
+  payload: category
+})
+
+export const categoryDelete = (category) => ({
+  type: 'CATEGORY_DELETE',
+  payload: category
+})
+
+export const categoryReset = () => ({ type: 'CATEGORY_RESET' })
