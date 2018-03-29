@@ -16,6 +16,7 @@ class CategoryItem extends React.Component {
 
     this.toggleEdit = this.toggleEdit.bind(this);
   }
+  
 
   toggleEdit() {
     this.state.editing ? this.state.editing = false : this.state.editing = true;
@@ -33,7 +34,7 @@ class CategoryItem extends React.Component {
         <p>Budget: ${budget}</p>
         <button onClick={() => this.props.categoryDelete(this.props.item)}>delete category</button>
         {this.state.editing ?
-          <CategoryForm buttonText='update' category={this.props.item} toggle={this.props.categoryToggleEdit} onComplete={this.props.categoryUpdate}/>
+          <CategoryForm buttonText='update' category={this.props.item} toggle={this.toggleEdit} onComplete={this.props.categoryUpdate}/>
           : null
         }
 
@@ -44,6 +45,7 @@ class CategoryItem extends React.Component {
     )
   }
 }
+
 
 let mapDispatchToProps = dispatch => ({
   categoryDelete: (category) => dispatch(categoryDelete(category)),

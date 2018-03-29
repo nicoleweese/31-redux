@@ -18,6 +18,13 @@ class CategoryForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // componentWillReceiveProps(props) {
+  //   if (this.props.category) {
+  //     this.setState(this.props.category);
+  //   }
+  // }
+  // this breaks the form text
+
   handleChange(e) {
     let {name, value} = e.target;
     this.setState({ [name]: value })
@@ -28,7 +35,7 @@ class CategoryForm extends React.Component {
     console.log(this.state);
     
     this.props.onComplete({...this.state});
-    this.state.editing ? this.props.toggle({...this.state}) : null;
+    this.props.toggle({...this.state}, () => console.log('state in category item', this.state));
   }
 
   render() {
