@@ -16,11 +16,6 @@ export const categoryUpdate = (category) => ({
   payload: category
 })
 
-export const categoryToggleEdit = (category) => ({
-  type: 'CATEGORY_TOGGLE',
-  payload: category
-})
-
 export const categoryDelete = (category) => ({
   type: 'CATEGORY_DELETE',
   payload: category

@@ -9,7 +9,6 @@ class CategoryForm extends React.Component {
     console.log('this.props.category', this.props.category );
     this.state = {
       id: props.category ? props.category.id : undefined,
-      editing: props.category ? props.category.editing : undefined,
       title: props.category ? props.category.title : '',
       budget: props.category ? props.category.budget : ''
     }
@@ -35,7 +34,9 @@ class CategoryForm extends React.Component {
     console.log(this.state);
     
     this.props.onComplete({...this.state});
-    this.props.toggle({...this.state}, () => console.log('state in category item', this.state));
+    if (this.props.wantToToggle) {
+      this.props.toggle({...this.state})
+    };
   }
 
   render() {
