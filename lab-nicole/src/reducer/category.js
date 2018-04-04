@@ -7,6 +7,7 @@ export default (state = initialState, action) => {
 
   switch (type) {
     case 'CATEGORY_CREATE':
+      console.log('category create');
       return [...state, payload]
     case 'CATEGORY_UPDATE':
       console.log('update category');
@@ -17,6 +18,6 @@ export default (state = initialState, action) => {
     case 'CATEGORY_RESET':
       return initialState
     default: 
-      return state  
+      return state
   }
 }

@@ -14,6 +14,7 @@ import CategoryItem from '../categoryitem';
 
 class DashboardContainer extends React.Component {
   render() {
+    console.log(this.props.categories);
     return(
       <main className='dashboard-container'>
         <h2>Restaurant Budget Tracker</h2>
@@ -33,7 +34,8 @@ class DashboardContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    categories: state
+    categories: state.categories,
+    expenses: state.expenses
   }
 }
 

@@ -2,26 +2,33 @@
 
 import React from 'react';
 
-export default class ExpenseForm extends React.Component {
+class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = props.expense ? {...props.expense} : {name: '', price: null, categoryId: props.categoryId},
+    this.state = {
+      name: '',
+      cost: null,
+      categoryId: this.props.category.id,
+    }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
-    this.setState({ content: e.target.value });
+    let {name, value} = e.target;
+    this.setState(state => {
+      return {...state, [name] : value}
+    });
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log(this.props.onComplete({...this.state}));
+
     this.props.onComplete(this.state);
-    if (!this.props.card) {
-      this.setState({ content: '' })
-    }
+    console.log('expense form state', this.state);
   }
 
   render() {
@@ -34,7 +41,17 @@ export default class ExpenseForm extends React.Component {
           value={this.state.name}
           onChange={this.handleChange}
         />
+        <input 
+          type='number'
+          name='cost'
+          placeholder='cost'
+          value={this.state.value}
+          onChange={this.handleChange}
+        />
+        <button type='submit'>Add</button>
       </form>
     )
   }
 }
+
+export default ExpenseForm;

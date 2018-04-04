@@ -6,7 +6,7 @@ import {store} from '../app/index.js';
 class CategoryForm extends React.Component {
   constructor(props) {
     super(props);
-    console.log('this.props.category', this.props.category );
+
     this.state = {
       id: props.category ? props.category.id : undefined,
       title: props.category ? props.category.title : '',
@@ -16,13 +16,6 @@ class CategoryForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  // componentWillReceiveProps(props) {
-  //   if (this.props.category) {
-  //     this.setState(this.props.category);
-  //   }
-  // }
-  // this breaks the form text
 
   handleChange(e) {
     let {name, value} = e.target;

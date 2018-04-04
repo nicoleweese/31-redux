@@ -3,8 +3,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import CategoryForm from '../categoryform'
+import ExpenseForm from '../expenseform'
 
 import {categoryDelete, categoryUpdate} from '../../action/category-actions.js';
+import {expenseCreate} from '../../action/expense-actions.js';
 
 class CategoryItem extends React.Component {
   constructor(props) {
@@ -32,12 +34,13 @@ class CategoryItem extends React.Component {
     return(
       <li key={id}>
         <h3>Category: {title}</h3>
-        <p>Budget: ${budget}</p>
         <button onClick={() => this.props.categoryDelete(this.props.item)}>delete category</button>
+        <p>Budget: ${budget}</p>
         {this.state.editing ?
           <CategoryForm buttonText='update' category={this.props.item} toggle={this.toggleEdit} wantToToggle={true} onComplete={this.props.categoryUpdate}/>
           : <button onClick={() => this.toggleEdit()}>{updateButtonText}</button>
         }
+        <ExpenseForm onComplete={this.props.expenseCreate} category={this.props.item} />
 
       </li>
     )
@@ -47,6 +50,7 @@ class CategoryItem extends React.Component {
 let mapDispatchToProps = dispatch => ({
   categoryDelete: (category) => dispatch(categoryDelete(category)),
   categoryUpdate: (category) => dispatch(categoryUpdate(category)),
+  expenseCreate: (expense) => dispatch(expenseCreate(expense)),
 });
 
 export default connect(null, mapDispatchToProps)(CategoryItem);
