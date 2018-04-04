@@ -11,7 +11,7 @@ class ExpenseItem extends React.Component {
       <ul>
         {expense.map(_expense => 
           <li key={_expense.id}>{_expense.name}
-          <p>{_expense.cost}</p>
+          <p>Cost: {_expense.cost}</p>
           </li>
         )}
       </ul>
