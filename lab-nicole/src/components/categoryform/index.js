@@ -23,9 +23,7 @@ class CategoryForm extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    console.log(this.state);
-    
+    e.preventDefault();    
     this.props.onComplete({...this.state});
     if (this.props.wantToToggle) {
       this.props.toggle({...this.state})

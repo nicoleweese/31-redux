@@ -25,10 +25,7 @@ class ExpenseForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.props.onComplete({...this.state}));
-
     this.props.onComplete(this.state);
-    console.log('expense form state', this.state);
   }
 
   render() {

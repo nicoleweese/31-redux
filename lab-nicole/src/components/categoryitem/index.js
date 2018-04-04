@@ -26,7 +26,6 @@ class CategoryItem extends React.Component {
   }
 
   render() {
-    console.log('this.props.item', this.props.item);
     let {id, title, budget} = this.props.item;
     let updateButtonText;
     this.state.editing ? 
@@ -42,9 +41,7 @@ class CategoryItem extends React.Component {
           : <button onClick={() => this.toggleEdit()}>{updateButtonText}</button>
         }
         <ExpenseForm onComplete={this.props.expenseCreate} category={this.props.item} />
-        {/* {this.props.item[this.props.item.id].length > 0 ?  */}
-          <ExpenseItem expense={this.props.expenses[this.props.item.id]} category={this.props.item}/>
-          {/* : null } */}
+        <ExpenseItem expense={this.props.expenses[this.props.item.id]} category={this.props.item}/>
       </li>
     )
   }

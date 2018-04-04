@@ -12,6 +12,7 @@ export default (state=initialState, action) => {
       return {...state, [payload.id] : undefined} 
     case 'EXPENSE_CREATE':
       let {categoryId} = payload;
+      console.log('payload', payload)
       let categoryExpenses = state[categoryId];
       return {...state, [categoryId]: [...categoryExpenses, payload]}
     default:
