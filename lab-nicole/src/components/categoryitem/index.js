@@ -2,9 +2,9 @@
 
 import React from 'react';
 import {connect} from 'react-redux';
-import CategoryForm from '../categoryform'
-import ExpenseForm from '../expenseform'
-
+import CategoryForm from '../categoryform';
+import ExpenseForm from '../expenseform';
+import ExpenseItem from '../expenseitem';
 import {categoryDelete, categoryUpdate} from '../../action/category-actions.js';
 import {expenseCreate} from '../../action/expense-actions.js';
 
@@ -26,6 +26,7 @@ class CategoryItem extends React.Component {
   }
 
   render() {
+    console.log('this.props.item', this.props.item);
     let {id, title, budget} = this.props.item;
     let updateButtonText;
     this.state.editing ? 
@@ -41,7 +42,9 @@ class CategoryItem extends React.Component {
           : <button onClick={() => this.toggleEdit()}>{updateButtonText}</button>
         }
         <ExpenseForm onComplete={this.props.expenseCreate} category={this.props.item} />
-
+        {/* {this.props.item[this.props.item.id].length > 0 ?  */}
+          <ExpenseItem expense={this.props.expenses[this.props.item.id]} category={this.props.item}/>
+          {/* : null } */}
       </li>
     )
   }

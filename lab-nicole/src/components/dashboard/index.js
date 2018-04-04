@@ -24,7 +24,7 @@ class DashboardContainer extends React.Component {
           />
           <ul>
           {this.props.categories.map(item => 
-            <CategoryItem key={item.id} item={item}  />
+            <CategoryItem key={item.id} item={item} expenses={this.props.expenses} />
           )}
           </ul>
       </main>

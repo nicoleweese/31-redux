@@ -2,7 +2,7 @@
 
 import uuid from 'uuid';
 
-export const expenseCreate = (card) => ({
+export const expenseCreate = (expense) => ({
   type: 'EXPENSE_CREATE',
-  payload: {...card, id: uuid(), timestamp: new Date()}
+  payload: {...expense, id: uuid(), timestamp: new Date()}
 })
