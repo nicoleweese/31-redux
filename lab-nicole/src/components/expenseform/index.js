@@ -25,6 +25,8 @@ class ExpenseForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log('::::handleSubmit state', this.state);
+    console.log(':::this.props.category', this.props.category);
     this.props.onComplete(this.state);
   }
 
@@ -45,7 +47,7 @@ class ExpenseForm extends React.Component {
           value={this.state.value}
           onChange={this.handleChange}
         />
-        <button type='submit'>Add</button>
+        <button type='submit'>{this.props.buttonText}</button>
       </form>
     )
   }

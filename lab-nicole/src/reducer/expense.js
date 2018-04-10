@@ -11,10 +11,23 @@ export default (state=initialState, action) => {
     case 'CATEGORY_DELETE':
       return {...state, [payload.id] : undefined} 
     case 'EXPENSE_CREATE':
-      let {categoryId} = payload;
-      console.log('payload', payload)
-      let categoryExpenses = state[categoryId];
+      var {categoryId} = payload;
+      var categoryExpenses = state[categoryId];
       return {...state, [categoryId]: [...categoryExpenses, payload]}
+    case 'EXPENSE_UPDATE':
+      var {categoryId} = payload;
+      var categoryExpenses = state[categoryId];
+      return {
+        ...state,
+        [categoryId]: categoryExpenses.map(expense => expense.categoryId === payload.categoryId ? payload : expense),
+      }
+    case 'EXPENSE_DELETE':
+      var {categoryId, id} = payload;
+      var categoryExpenses = state[categoryId];
+      return {
+        ...state,
+        [categoryId]: categoryExpenses.filter(expense => expense.id !== id),
+      }
     default:
       return state;
   }

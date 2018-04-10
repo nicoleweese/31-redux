@@ -32,7 +32,7 @@ class CategoryItem extends React.Component {
       updateButtonText = 'hide' :
       updateButtonText = 'update'
     return(
-      <li key={id}>
+      <li>
         <h3>Category: {title}</h3>
         <button onClick={() => this.props.categoryDelete(this.props.item)}>delete category</button>
         <p>Budget: ${budget}</p>
@@ -40,8 +40,8 @@ class CategoryItem extends React.Component {
           <CategoryForm buttonText='update' category={this.props.item} toggle={this.toggleEdit} wantToToggle={true} onComplete={this.props.categoryUpdate}/>
           : <button onClick={() => this.toggleEdit()}>{updateButtonText}</button>
         }
-        <ExpenseForm onComplete={this.props.expenseCreate} category={this.props.item} />
-        <ExpenseItem expense={this.props.expenses[this.props.item.id]} category={this.props.item}/>
+        <ExpenseForm onComplete={this.props.expenseCreate} category={this.props.item} buttonText='Add'/>
+        <ExpenseItem key={id} expense={this.props.expenses[this.props.item.id]} category={this.props.item}/>
       </li>
     )
   }
